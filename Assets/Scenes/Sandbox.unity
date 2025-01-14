@@ -514,9 +514,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cca9ad3e1e23da4098cc499b1205610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicEnemy: {fileID: 8963668662779700737, guid: 14123bcdada5b9c40a8c67d023141781,
-    type: 3}
   pathA: {fileID: 1579439673}
+  wave01Enemies:
+  - {fileID: 8963668662779700737, guid: 14123bcdada5b9c40a8c67d023141781, type: 3}
+  - {fileID: 8963668662779700737, guid: 14123bcdada5b9c40a8c67d023141781, type: 3}
+  - {fileID: 8963668662779700737, guid: 14123bcdada5b9c40a8c67d023141781, type: 3}
+  - {fileID: 8963668662779700737, guid: 14123bcdada5b9c40a8c67d023141781, type: 3}
+  - {fileID: 8963668662779700737, guid: 14123bcdada5b9c40a8c67d023141781, type: 3}
+  - {fileID: 8963668662779700737, guid: 14123bcdada5b9c40a8c67d023141781, type: 3}
+  - {fileID: 8963668662779700737, guid: 14123bcdada5b9c40a8c67d023141781, type: 3}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
