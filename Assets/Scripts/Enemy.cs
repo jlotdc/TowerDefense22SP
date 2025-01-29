@@ -10,6 +10,12 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] float speed = 5f;
 
+    [SerializeField] float maxHealth = 100;
+    [SerializeField] float currentHealth;
+    [SerializeField] HealthBar HealthBar;
+
+
+
 
     //Pathfinding related
     [SerializeField] EnemyPath path; //The 'map' or path
@@ -26,8 +32,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // transform.position = new Vector3(0, 5, 0);
-
+       currentHealth = maxHealth;
 
     }
 
@@ -97,5 +102,22 @@ public class Enemy : MonoBehaviour
 
 
     }
+
+
+    public void InflictDamage(float incomingDamage)
+    {
+        currentHealth -= incomingDamage;
+
+        HealthBar.UpdateHealthBar(currentHealth, maxHealth);
+
+
+        if (currentHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
+
+
 
 }

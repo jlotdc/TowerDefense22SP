@@ -211,3 +211,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplayer: 10
+  damage: 50

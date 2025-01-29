@@ -5,7 +5,9 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
 
-    [SerializeField] float speedMultiplayer = 1f;   
+    [SerializeField] float speedMultiplayer = 1f;
+    [SerializeField] float damage = 30f;
+
    private Rigidbody rb;
     private Enemy targetedEnemy;
 
@@ -42,7 +44,7 @@ public class Projectile : MonoBehaviour
         {
             if(other.gameObject == targetedEnemy.gameObject)
             {
-                Destroy(targetedEnemy.gameObject);
+                targetedEnemy.InflictDamage(damage);
             }
         }
 
