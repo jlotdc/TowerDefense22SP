@@ -25,12 +25,14 @@ public class UI_InGameUI : MonoBehaviour
 
     private void OnEnable()
     {
-        eventManager.onEnemyDestroyed += UpdateMoney;
+        eventManager.onMakeMoney += UpdateMoney;
+        eventManager.onReduceMoney += UpdateMoney;
     }
 
     private void OnDisable()
     {
-        eventManager.onEnemyDestroyed -= UpdateMoney;
+        eventManager.onMakeMoney -= UpdateMoney;
+        eventManager.onReduceMoney -= UpdateMoney;
     }
 
 
@@ -39,7 +41,7 @@ public class UI_InGameUI : MonoBehaviour
         livesTextObject.text = $"Lives: {gameManeger.lives}";
     }
 
-    private void UpdateMoney()
+    private void UpdateMoney(int UnusedValue = -1)
     {
       moneyTextObject.text = $"Money: {gameManeger.money}"; 
     }

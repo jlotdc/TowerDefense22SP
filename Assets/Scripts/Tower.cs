@@ -4,7 +4,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
+
 {
+
+    [SerializeField] int price = 50;
+
+    public int Price => price;
+
 
     //shooting related
     [SerializeField] Transform firingPoint;

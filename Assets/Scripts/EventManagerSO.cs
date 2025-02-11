@@ -9,14 +9,16 @@ using UnityEngine;
 public class EventManagerSO : ScriptableObject
 {
 
+    public event Action <int> onMakeMoney;
+    public event Action <int> onReduceMoney;
 
-
-    public event Action onEnemyDestroyed;
-
-    public void EnemyDestroyed()
+    public void MakeMoney (int moneyMade)
     {
-        onEnemyDestroyed?.Invoke();
+        onMakeMoney?.Invoke(moneyMade);
     }
 
-
+    public void ReduceMoney(int moneyToReduce)
+        { 
+        onReduceMoney?.Invoke(moneyToReduce);
+        }
 }

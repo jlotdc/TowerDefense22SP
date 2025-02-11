@@ -23,19 +23,26 @@ public class GameManagerSO : ScriptableObject
 
     private void OnEnable()
     {
-        eventManager.onEnemyDestroyed += AddMoney;
+        eventManager.onMakeMoney += AddMoney;
+        eventManager.onReduceMoney += ReduceMoney;
     }
 
 
     private void OnDisable()
     {
-        eventManager.onEnemyDestroyed -= AddMoney;
+        eventManager.onMakeMoney -= AddMoney;
+        eventManager.onReduceMoney -= ReduceMoney;
     }
 
 
-    private void AddMoney()
+    private void AddMoney(int incomingMoney)
     {
-        money++;
+        money += incomingMoney;
+    }
+
+    private void ReduceMoney(int amountToReduce)
+    {
+        money -= amountToReduce;
     }
 
 

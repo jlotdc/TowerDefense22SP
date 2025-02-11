@@ -6,6 +6,8 @@ using UnityEngine.Tilemaps;
 
 public class TowerSpawner : MonoBehaviour
 {
+    [SerializeField] GameManagerSO gameManager;
+    [SerializeField] EventManagerSO eventManager;
 
     [SerializeField] Tilemap groundTiles;
     [SerializeField] LayerMask groundLayers;
@@ -30,9 +32,15 @@ public class TowerSpawner : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                towerIndicatorObject = Instantiate(towerToSpawn, mousePosition, Quaternion.identity);
-                isActive = true;
-                return;
+
+
+                if (gameManager.money >= towerToSpawn.Price)
+
+                {
+                    towerIndicatorObject = Instantiate(towerToSpawn, mousePosition, Quaternion.identity);
+                    isActive = true;
+                    return;
+                }
             }
         }
 
@@ -48,6 +56,8 @@ public class TowerSpawner : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 //place down the tower
+                //gameManager.money -= towerToSpawn.Price;
+                eventManager.ReduceMoney(towerIndicatorObject.Price);
                 towerIndicatorObject.ActivateTower();
                 towerIndicatorObject = null; //leave tower behind
                 isActive = false;           //disable laser poitner

@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] EventManagerSO eventManager;
 
+    [SerializeField] int reward = 20;
+
     [SerializeField] float maxHealth = 100;
     [SerializeField] float currentHealth;
     [SerializeField] HealthBar HealthBar;
@@ -116,7 +118,7 @@ public class Enemy : MonoBehaviour
         if (currentHealth <= 0)
         {
 
-            eventManager.EnemyDestroyed();
+            eventManager.MakeMoney(reward);
 
             Destroy(this.gameObject);
         }
