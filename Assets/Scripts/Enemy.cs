@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] float speed = 5f;
 
+    [SerializeField] EventManagerSO eventManager;
+
     [SerializeField] float maxHealth = 100;
     [SerializeField] float currentHealth;
     [SerializeField] HealthBar HealthBar;
@@ -113,6 +115,9 @@ public class Enemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+
+            eventManager.EnemyDestroyed();
+
             Destroy(this.gameObject);
         }
 

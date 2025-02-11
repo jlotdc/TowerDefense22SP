@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
+  eventManager: {fileID: 11400000, guid: 0f37d0f60843bd74baf795cb36b85b96, type: 2}
   maxHealth: 100
   currentHealth: 0
   HealthBar: {fileID: 4637785015279561000}
