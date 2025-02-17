@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(menuName ="Managers/Game Manager", fileName ="GameManager")]
 
@@ -13,7 +14,8 @@ public class GameManagerSO : ScriptableObject
 
 
     [Header("Default Values")]
-    [Tooltip("Default Lives")]public int defaultLives = 3;
+    [Tooltip("Default Lives")]
+    public int defaultLives = 3;
     public int defaultMoney = 250;
 
     [Header("Current Values")]
@@ -25,6 +27,8 @@ public class GameManagerSO : ScriptableObject
     {
         eventManager.onMakeMoney += AddMoney;
         eventManager.onReduceMoney += ReduceMoney;
+        eventManager.onEnemyDestroyed += LoseLife;
+        eventManager.onLevelReset += ResetLevel;
     }
 
 
@@ -32,6 +36,8 @@ public class GameManagerSO : ScriptableObject
     {
         eventManager.onMakeMoney -= AddMoney;
         eventManager.onReduceMoney -= ReduceMoney;
+        eventManager.onEnemyDestroyed -= LoseLife;
+        eventManager.onLevelReset -= ResetLevel;
     }
 
 
@@ -50,6 +56,17 @@ public class GameManagerSO : ScriptableObject
     {
         money = defaultMoney;
         lives = defaultLives;
+    }
+
+    private void LoseLife()
+    {
+        lives -= 1;
+    }
+
+
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 

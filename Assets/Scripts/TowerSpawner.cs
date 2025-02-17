@@ -20,6 +20,18 @@ public class TowerSpawner : MonoBehaviour
 
     Vector3Int cellPosition;
 
+
+    private void OnEnable()
+    {
+        eventManager.onStartPlacingTower += ActiveTowerPlacement;
+    }
+
+    private void OnDisable()
+    {
+        eventManager.onStartPlacingTower -= ActiveTowerPlacement;
+    }
+
+
     private void Start()
     {
         isActive = false;
@@ -91,4 +103,19 @@ public class TowerSpawner : MonoBehaviour
 
     }
 
+    private void ActiveTowerPlacement()
+    {
+        if (!isActive)
+        {
+
+            if (gameManager.money >= towerToSpawn.Price)
+
+            {
+                towerIndicatorObject = Instantiate(towerToSpawn, mousePosition, Quaternion.identity);
+                isActive = true;
+                return;
+            }
+
+        }
+    }
 }
